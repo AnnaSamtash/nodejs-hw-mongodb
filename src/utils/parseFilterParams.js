@@ -4,7 +4,9 @@ const parseType = (contactType) =>
   contactType;
 
 const parseIsFavourite = (isFavourite) =>
-  typeof isFavourite === 'boolean' && isFavourite;
+  typeof isFavourite === 'string' &&
+  ['true', 'false'].includes(isFavourite) &&
+  isFavourite;
 
 export const parseFilterParams = (query) => {
   const { contactType, isFavourite } = query;

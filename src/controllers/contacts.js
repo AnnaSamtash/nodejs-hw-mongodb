@@ -10,7 +10,7 @@ import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
 import { parseFilterParams } from '../utils/parseFilterParams.js';
 
-export const getAllContacts = async (req, res, next) => {
+export const getAllContacts = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
   const { sortBy, sortOrder } = parseSortParams(req.query);
   const filter = parseFilterParams(req.query);
@@ -29,7 +29,7 @@ export const getAllContacts = async (req, res, next) => {
   });
 };
 
-export const getContactById = async (req, res, next) => {
+export const getContactById = async (req, res) => {
   const { contactId } = req.params;
   const contact = await getContactByIdService(contactId);
 
@@ -44,7 +44,7 @@ export const getContactById = async (req, res, next) => {
   });
 };
 
-export const createContact = async (req, res, next) => {
+export const createContact = async (req, res) => {
   const contact = await createContactService(req.body);
 
   res.status(201).json({
@@ -54,7 +54,7 @@ export const createContact = async (req, res, next) => {
   });
 };
 
-export const deleteContact = async (req, res, next) => {
+export const deleteContact = async (req, res) => {
   const { contactId } = req.params;
   const contact = await deleteContactService(contactId);
 
@@ -65,7 +65,7 @@ export const deleteContact = async (req, res, next) => {
   res.status(204).send();
 };
 
-export const upsertContact = async (req, res, next) => {
+export const upsertContact = async (req, res) => {
   const { contactId } = req.params;
   const result = await updateContactService(contactId, req.body, {
     upsert: true,
@@ -84,7 +84,7 @@ export const upsertContact = async (req, res, next) => {
   });
 };
 
-export const patchContact = async (req, res, next) => {
+export const patchContact = async (req, res) => {
   const { contactId } = req.params;
   const result = await updateContactService(contactId, req.body);
 

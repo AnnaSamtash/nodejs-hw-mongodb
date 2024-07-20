@@ -21,17 +21,26 @@ export const getAllContactsService = async ({
     contactQuery.where('isFavourite').equals(filter.isFavourite);
   }
 
-  const contactCount = await ContactsCollection.find()
-    .merge(contactQuery)
-    .countDocuments();
+  // const contactsCount = await ContactsCollection.find()
+  //   .merge(contactQuery)
+  //   .countDocuments();
 
-  const contacts = await contactQuery
-    .skip(skip)
-    .limit(limit)
-    .sort({ [sortBy]: sortOrder })
-    .exec();
+  // const contacts = await contactQuery
+  //   .skip(skip)
+  //   .limit(limit)
+  //   .sort({ [sortBy]: sortOrder })
+  //   .exec();
 
-  const paginationData = calculatePaginationData(contactCount, page, perPage);
+  const [contactsCount, contacts] = await Promise.all([
+    ContactsCollection.find().merge(contactQuery).countDocuments(),
+    contactQuery
+      .skip(skip)
+      .limit(limit)
+      .sort({ [sortBy]: sortOrder })
+      .exec(),
+  ]);
+
+  const paginationData = calculatePaginationData(contactsCount, page, perPage);
   return {
     data: contacts,
     ...paginationData,
