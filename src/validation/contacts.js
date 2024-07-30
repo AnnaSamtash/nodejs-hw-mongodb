@@ -25,9 +25,6 @@ export const createContactSchema = Joi.object({
       'any.only': 'Contact type must be "work", "home", or "personal"',
       'any.required': 'Contact type is a required field',
     }),
-  userId: Joi.string().messages({
-    'string.base': 'userId must be a string',
-  }),
 });
 
 export const updateContactSchema = Joi.object({
@@ -47,8 +44,5 @@ export const updateContactSchema = Joi.object({
   isFavourite: Joi.boolean(),
   contactType: Joi.string().valid('work', 'home', 'personal').messages({
     'any.only': 'Contact type must be "work", "home", or "personal"',
-  }),
-  userId: Joi.string().messages({
-    'string.base': 'userId must be a string',
   }),
 });
