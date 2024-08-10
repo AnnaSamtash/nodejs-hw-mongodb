@@ -1,10 +1,12 @@
-import { ONE_DAY } from '../constants/index.js';
 import {
   loginUserService,
   LogoutUserService,
   refreshUserSessionService,
   registerUserService,
+  requestResetTokenService,
+  resetPasswordService,
 } from '../services/auth.js';
+import { setupSession } from '../utils/setupSession.js';
 
 export const registerUserController = async (req, res) => {
   const user = await registerUserService(req.body);
@@ -12,17 +14,6 @@ export const registerUserController = async (req, res) => {
     status: 201,
     message: 'Successfully registered a user!',
     data: user,
-  });
-};
-
-const setupSession = (res, session) => {
-  res.cookie('refreshToken', session.refreshToken, {
-    httpOnly: true,
-    expires: new Date(Date.now() + ONE_DAY),
-  });
-  res.cookie('sessionId', session._id, {
-    httpOnly: true,
-    expires: new Date(Date.now() + ONE_DAY),
   });
 };
 
@@ -61,5 +52,25 @@ export const refreshUserSessionController = async (req, res) => {
     data: {
       accessToken: session.accessToken,
     },
+  });
+};
+
+export const requestResetEmailController = async (req, res) => {
+  await requestResetTokenService(req.body.email);
+
+  res.json({
+    status: 200,
+    message: 'Reset password email was successfully sent!',
+    data: {},
+  });
+};
+
+export const resetPasswordController = async (req, res) => {
+  await resetPasswordService(req.body);
+
+  res.json({
+    message: 'Password has been successfully reset.',
+    status: 200,
+    data: {},
   });
 };

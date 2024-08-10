@@ -41,8 +41,8 @@ export const getAllContactsService = async ({
 export const getContactByIdService = (contactId, userId) =>
   ContactsCollection.findOne({ _id: contactId, userId });
 
-export const createContactService = (payload) =>
-  ContactsCollection.create(payload);
+export const createContactService = (contactData) =>
+  ContactsCollection.create(contactData);
 
 export const deleteContactService = (contactId, userId) =>
   ContactsCollection.findOneAndDelete({ _id: contactId, userId });
@@ -50,12 +50,12 @@ export const deleteContactService = (contactId, userId) =>
 export const updateContactService = async (
   contactId,
   userId,
-  payload,
+  contactDate,
   options = {},
 ) => {
   const result = await ContactsCollection.findOneAndUpdate(
     { _id: contactId, userId },
-    payload,
+    contactDate,
     {
       new: true,
       includeResultMetadata: true,
