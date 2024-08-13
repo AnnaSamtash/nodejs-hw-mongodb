@@ -10,6 +10,11 @@ import Handlebars from 'handlebars';
 import path from 'node:path';
 import * as fs from 'node:fs/promises';
 import { createSession } from '../utils/createSession.js';
+import {
+  getFullNameFromGoogleTokenPayload,
+  validateCode,
+} from '../utils/googleOAuth2.js';
+import { randomBytes } from 'node:crypto';
 
 const findUserByEmail = (email) => UsersCollection.findOne({ email });
 
@@ -145,5 +150,29 @@ export const resetPasswordService = async (resetData) => {
 
   await UsersCollection.findByIdAndUpdate(user._id, {
     password: encryptedPassword,
+  });
+};
+
+export const loginOrSignupWithGoogleService = async (code) => {
+  const loginTicket = await validateCode(code);
+  const payload = loginTicket.getPayload();
+  if (!payload) throw createHttpError(401, 'Unauthorized');
+
+  let user = await findUserByEmail(payload.email);
+
+  if (!user) {
+    const password = await bcrypt.hash(randomBytes(10), 10);
+    user = await UsersCollection.create({
+      email: payload.email,
+      name: getFullNameFromGoogleTokenPayload(payload),
+      password,
+    });
+  }
+
+  const newSession = createSession();
+
+  return await SessionsCollection.create({
+    userId: user._id,
+    ...newSession,
   });
 };

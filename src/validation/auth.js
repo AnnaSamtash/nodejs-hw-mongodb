@@ -35,10 +35,23 @@ export const loginUserSchema = Joi.object({
 });
 
 export const requestResetEmailSchema = Joi.object({
-  email: Joi.string().email().required(),
+  email: Joi.string().email().required().messages({
+    'string.email': 'Invalid email format',
+  }),
 });
 
 export const resetPasswordSchema = Joi.object({
-  password: Joi.string().required(),
+  password: Joi.string()
+    .regex(/^[a-zA-Z0-9]{10}$/)
+    .required()
+    .messages({
+      'string.pattern.base':
+        'Password must be exactly 10 characters long and contain only letters and numbers',
+      'any.required': 'Password is a required field',
+    }),
   token: Joi.string().required(),
+});
+
+export const loginWithGoogleOAuthSchema = Joi.object({
+  code: Joi.string().required(),
 });
