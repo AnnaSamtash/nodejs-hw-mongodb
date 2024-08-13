@@ -26,7 +26,7 @@ requestBody:
           name:
             description: "Сontact's name"
             type: string
-            example: 'John Doe'
+            example: 'Harley Gleason'
           phoneNumber:
             description: "Contact's phoneNumber"
             type: string
@@ -34,6 +34,7 @@ requestBody:
           email:
             description: "Contact's email"
             type: string
+            format: email
             example: 'Harley.Gleason@gmail.com'
           isFavourite:
             description: "User's favourite contact"
@@ -46,7 +47,7 @@ requestBody:
           userId:
             description: "Contact's user id"
             type: string
-            example: 65e4decdd286b30065d54af9
+            example: '65e4decdd286b30065d54af9'
           photo:
             description: "Link to contact's photo"
             type: string

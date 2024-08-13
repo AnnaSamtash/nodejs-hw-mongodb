@@ -16,7 +16,7 @@ properties:
   name:
     description: "Contact's name"
     type: string
-    example: 'John Doe'
+    example: 'Harley Gleason'
   phoneNumber:
     description: "Contact's phoneNumber"
     type: string
@@ -24,6 +24,7 @@ properties:
   email:
     description: "Contact's email"
     type: string
+    format: email
     example: 'Harley.Gleason@gmail.com'
   isFavourite:
     description: "User's favourite contact"

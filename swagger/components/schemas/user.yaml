@@ -12,7 +12,7 @@ properties:
   name:
     description: "User's name"
     type: string
-    example: 'John Doe'
+    example: 'Harley Gleason'
   email:
     description: "User's email"
     type: string
@@ -21,4 +21,4 @@ properties:
   password:
     description: "User's password"
     type: string
-    example: my-password89
+    example: password89

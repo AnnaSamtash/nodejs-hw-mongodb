@@ -16,7 +16,7 @@ requestBody:
           code:
             description: 'Google OAuth code'
             type: string
-            example: 4/0AcvDMrBEiFuiDl97VQXBFcGKpSC48x6CKheONbNY73RZFeqExbRrgjt0VP2bCYMXe66sww
+            example: '4/0AcvDMrBEiFuiDl97VQXBFcGKpSC48x6CKheONbNY73RZFeqExbRrgjt0VP2bCYMXe66sww'
 responses:
   '200':
     description: Loged in via Google OAuth.
