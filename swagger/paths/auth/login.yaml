@@ -3,8 +3,7 @@ tags:
 summary: Login a user
 operationId: loginUser
 description: 'Authenticates a user with payload'
-security:
-  - bearerAuth: []
+security: []
 requestBody:
   content:
     application/json:

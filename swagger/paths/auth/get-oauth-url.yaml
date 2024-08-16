@@ -3,8 +3,7 @@ tags:
 summary: Get Google OAuth URL
 operationId: getOauthUrl
 description: 'Generates and returns a Google OAuth URL'
-security:
-  - bearerAuth: []
+security: []
 responses:
   '200':
     description: Get Google OAuth URL

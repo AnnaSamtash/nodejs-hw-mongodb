@@ -14,7 +14,6 @@ requestBody:
           - name
           - phoneNumber
           - contactType
-          - userId
         properties:
           name:
             description: "Сontact's name"
@@ -32,19 +31,17 @@ requestBody:
           isFavourite:
             description: "User's favourite contact"
             type: boolean
+            default: false
             example: false
           contactType:
             description: 'Type of contact'
             type: string
             enum: ['work', 'home', 'personal']
-          userId:
-            description: "Contact's user id"
-            type: string
-            example: '65e4decdd286b30065d54af9'
+            default: personal
           photo:
             description: "Link to contact's photo"
             type: string
-            example: <https://res.cloudinary.com/dartenrtb/image/upload/v1723262418/oysuavvteicypdvufvyg.png>
+            format: binary
 responses:
   '201':
     description: Creates a contact

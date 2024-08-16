@@ -3,8 +3,7 @@ tags:
 summary: Reset password
 operationId: resetPassword
 description: 'Reset password'
-security:
-  - bearerAuth: []
+security: []
 requestBody:
   content:
     application/json:

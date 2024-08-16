@@ -202,14 +202,13 @@
                 "required": [
                   "name",
                   "phoneNumber",
-                  "contactType",
-                  "userId"
+                  "contactType"
                 ],
                 "properties": {
                   "name": {
                     "description": "Сontact's name",
                     "type": "string",
-                    "example": "John Doe"
+                    "example": "Harley Gleason"
                   },
                   "phoneNumber": {
                     "description": "Contact's phoneNumber",
@@ -219,12 +218,13 @@
                   "email": {
                     "description": "Contact's email",
                     "type": "string",
+                    "format": "email",
                     "example": "Harley.Gleason@gmail.com"
                   },
                   "isFavourite": {
                     "description": "User's favourite contact",
                     "type": "boolean",
-                    "example": false
+                    "default": false
                   },
                   "contactType": {
                     "description": "Type of contact",
@@ -233,17 +233,13 @@
                       "work",
                       "home",
                       "personal"
-                    ]
-                  },
-                  "userId": {
-                    "description": "Contact's user id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
+                    ],
+                    "default": "personal"
                   },
                   "photo": {
                     "description": "Link to contact's photo",
                     "type": "string",
-                    "example": "<https://res.cloudinary.com/dartenrtb/image/upload/v1723262418/oysuavvteicypdvufvyg.png>"
+                    "format": "binary"
                   }
                 }
               }
@@ -420,17 +416,11 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "name",
-                  "phoneNumber",
-                  "contactType",
-                  "userId"
-                ],
                 "properties": {
                   "name": {
                     "description": "Сontact's name",
                     "type": "string",
-                    "example": "John Doe"
+                    "example": "Harley Gleason"
                   },
                   "phoneNumber": {
                     "description": "Contact's phoneNumber",
@@ -440,12 +430,13 @@
                   "email": {
                     "description": "Contact's email",
                     "type": "string",
+                    "format": "email",
                     "example": "Harley.Gleason@gmail.com"
                   },
                   "isFavourite": {
                     "description": "User's favourite contact",
                     "type": "boolean",
-                    "example": false
+                    "default": false
                   },
                   "contactType": {
                     "description": "Type of contact",
@@ -454,17 +445,13 @@
                       "work",
                       "home",
                       "personal"
-                    ]
-                  },
-                  "userId": {
-                    "description": "Contact's user id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
+                    ],
+                    "default": "personal"
                   },
                   "photo": {
                     "description": "Link to contact's photo",
                     "type": "string",
-                    "example": "<https://res.cloudinary.com/dartenrtb/image/upload/v1723262418/oysuavvteicypdvufvyg.png>"
+                    "format": "binary"
                   }
                 }
               }
@@ -543,14 +530,13 @@
                 "required": [
                   "name",
                   "phoneNumber",
-                  "contactType",
-                  "userId"
+                  "contactType"
                 ],
                 "properties": {
                   "name": {
                     "description": "Сontact's name",
                     "type": "string",
-                    "example": "John Doe"
+                    "example": "Harley Gleason"
                   },
                   "phoneNumber": {
                     "description": "Contact's phoneNumber",
@@ -560,12 +546,13 @@
                   "email": {
                     "description": "Contact's email",
                     "type": "string",
+                    "format": "email",
                     "example": "Harley.Gleason@gmail.com"
                   },
                   "isFavourite": {
                     "description": "User's favourite contact",
                     "type": "boolean",
-                    "example": false
+                    "default": false
                   },
                   "contactType": {
                     "description": "Type of contact",
@@ -574,17 +561,13 @@
                       "work",
                       "home",
                       "personal"
-                    ]
-                  },
-                  "userId": {
-                    "description": "Contact's user id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
+                    ],
+                    "default": "personal"
                   },
                   "photo": {
                     "description": "Link to contact's photo",
                     "type": "string",
-                    "example": "<https://res.cloudinary.com/dartenrtb/image/upload/v1723262418/oysuavvteicypdvufvyg.png>"
+                    "format": "binary"
                   }
                 }
               }
@@ -670,14 +653,10 @@
         "summary": "Register a user",
         "operationId": "registerUser",
         "description": "Create a new user with payload",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "required": [
@@ -690,7 +669,7 @@
                     "description": "User's name",
                     "type": "string",
                     "format": "email",
-                    "example": "John Doe"
+                    "example": "Harley Gleason"
                   },
                   "email": {
                     "description": "User's email",
@@ -700,7 +679,7 @@
                   "password": {
                     "description": "User's password",
                     "type": "string",
-                    "example": "my-password89"
+                    "example": "password89"
                   }
                 }
               }
@@ -757,11 +736,7 @@
         "summary": "Login a user",
         "operationId": "loginUser",
         "description": "Authenticates a user with payload",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -780,7 +755,7 @@
                   "password": {
                     "description": "User's password",
                     "type": "string",
-                    "example": "my-password89"
+                    "example": "password89"
                   }
                 }
               }
@@ -841,11 +816,7 @@
         "summary": "Logout a user",
         "operationId": "logoutUser",
         "description": "Logout a user and clears their session cookies",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "204": {
             "description": "User successfully logged out"
@@ -867,11 +838,7 @@
         "summary": "Refresh user session",
         "operationId": "refreshSession",
         "description": "Refreshes the session and returns a new access token",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Session refreshed.",
@@ -918,11 +885,7 @@
         "summary": "Send password reset email",
         "operationId": "sendResetEmail",
         "description": "Sends a password reset email to the user with a reset link",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -987,11 +950,7 @@
         "summary": "Reset password",
         "operationId": "resetPassword",
         "description": "Reset password",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1010,7 +969,7 @@
                   "password": {
                     "description": "User's password",
                     "type": "string",
-                    "example": "my-password89"
+                    "example": "password89"
                   }
                 }
               }
@@ -1061,11 +1020,7 @@
         "summary": "Get Google OAuth URL",
         "operationId": "getOauthUrl",
         "description": "Generates and returns a Google OAuth URL",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Get Google OAuth URL",
@@ -1112,11 +1067,7 @@
         "summary": "Confirm Google OAuth",
         "operationId": "confirmOAuth",
         "description": "Confirms Google OAuth and logs in the user, returning an access token.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1204,7 +1155,7 @@
           "name": {
             "description": "Contact's name",
             "type": "string",
-            "example": "John Doe"
+            "example": "Harley Gleason"
           },
           "phoneNumber": {
             "description": "Contact's phoneNumber",
@@ -1214,12 +1165,13 @@
           "email": {
             "description": "Contact's email",
             "type": "string",
+            "format": "email",
             "example": "Harley.Gleason@gmail.com"
           },
           "isFavourite": {
             "description": "User's favourite contact",
             "type": "boolean",
-            "example": false
+            "default": false
           },
           "contactType": {
             "description": "Type of contact",
@@ -1228,7 +1180,8 @@
               "work",
               "home",
               "personal"
-            ]
+            ],
+            "default": "personal"
           },
           "userId": {
             "description": "Contact's user id",
@@ -1259,7 +1212,7 @@
           "name": {
             "description": "User's name",
             "type": "string",
-            "example": "John Doe"
+            "example": "Harley Gleason"
           },
           "email": {
             "description": "User's email",
@@ -1270,7 +1223,7 @@
           "password": {
             "description": "User's password",
             "type": "string",
-            "example": "my-password89"
+            "example": "password89"
           }
         }
       }

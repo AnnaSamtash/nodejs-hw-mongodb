@@ -3,8 +3,7 @@ tags:
 summary: Confirm Google OAuth
 operationId: confirmOAuth
 description: 'Confirms Google OAuth and logs in the user, returning an access token.'
-security:
-  - bearerAuth: []
+security: []
 requestBody:
   content:
     application/json:

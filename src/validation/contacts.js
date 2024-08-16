@@ -14,10 +14,10 @@ export const createContactSchema = Joi.object({
       'string.pattern.base': 'Phone number must be in the format +380XXXXXXXXX',
       'any.required': 'Phone number is a required field',
     }),
-  email: Joi.string().email().messages({
+  email: Joi.string().email().allow('').messages({
     'string.email': 'Invalid email format',
   }),
-  isFavourite: Joi.boolean(),
+  isFavourite: Joi.boolean().default(false),
   contactType: Joi.string()
     .valid('work', 'home', 'personal')
     .required()
@@ -25,7 +25,7 @@ export const createContactSchema = Joi.object({
       'any.only': 'Contact type must be "work", "home", or "personal"',
       'any.required': 'Contact type is a required field',
     }),
-  photo: Joi.string(),
+  photo: Joi.string().allow('').default(null),
 });
 
 export const updateContactSchema = Joi.object({
@@ -39,12 +39,12 @@ export const updateContactSchema = Joi.object({
     .messages({
       'string.pattern.base': 'Phone number must be in the format +380XXXXXXXXX',
     }),
-  email: Joi.string().email().messages({
+  email: Joi.string().email().allow('').messages({
     'string.email': 'Invalid email format',
   }),
-  isFavourite: Joi.boolean(),
+  isFavourite: Joi.boolean().default(false),
   contactType: Joi.string().valid('work', 'home', 'personal').messages({
     'any.only': 'Contact type must be "work", "home", or "personal"',
   }),
-  photo: Joi.string(),
+  photo: Joi.string().allow('').default(null),
 });

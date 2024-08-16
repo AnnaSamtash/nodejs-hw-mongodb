@@ -3,8 +3,7 @@ tags:
 summary: Send password reset email
 operationId: sendResetEmail
 description: 'Sends a password reset email to the user with a reset link'
-security:
-  - bearerAuth: []
+security: []
 requestBody:
   content:
     application/json:

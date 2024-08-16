@@ -3,8 +3,7 @@ tags:
 summary: Logout a user
 operationId: logoutUser
 description: 'Logout a user and clears their session cookies'
-security:
-  - bearerAuth: []
+security: []
 responses:
   '204':
     description: User successfully logged out

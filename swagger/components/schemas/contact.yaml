@@ -29,11 +29,13 @@ properties:
   isFavourite:
     description: "User's favourite contact"
     type: boolean
+    default: false
     example: false
   contactType:
     description: 'Type of contact'
     type: string
     enum: ['work', 'home', 'personal']
+    default: personal
   userId:
     description: "Contact's user id"
     type: string
@@ -41,4 +43,5 @@ properties:
   photo:
     description: "Link to contact's photo"
     type: string
+    default: null
     example: <https://res.cloudinary.com/dartenrtb/image/upload/v1723262418/oysuavvteicypdvufvyg.png>
