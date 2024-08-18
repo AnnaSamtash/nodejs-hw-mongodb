@@ -224,7 +224,8 @@
                   "isFavourite": {
                     "description": "User's favourite contact",
                     "type": "boolean",
-                    "default": false
+                    "default": false,
+                    "example": false
                   },
                   "contactType": {
                     "description": "Type of contact",
@@ -436,7 +437,8 @@
                   "isFavourite": {
                     "description": "User's favourite contact",
                     "type": "boolean",
-                    "default": false
+                    "default": false,
+                    "example": false
                   },
                   "contactType": {
                     "description": "Type of contact",
@@ -552,7 +554,8 @@
                   "isFavourite": {
                     "description": "User's favourite contact",
                     "type": "boolean",
-                    "default": false
+                    "default": false,
+                    "example": false
                   },
                   "contactType": {
                     "description": "Type of contact",
@@ -1171,7 +1174,8 @@
           "isFavourite": {
             "description": "User's favourite contact",
             "type": "boolean",
-            "default": false
+            "default": false,
+            "example": false
           },
           "contactType": {
             "description": "Type of contact",
@@ -1191,6 +1195,7 @@
           "photo": {
             "description": "Link to contact's photo",
             "type": "string",
+            "default": null,
             "example": "<https://res.cloudinary.com/dartenrtb/image/upload/v1723262418/oysuavvteicypdvufvyg.png>"
           }
         }
@@ -1200,8 +1205,7 @@
         "required": [
           "_id",
           "name",
-          "email",
-          "password"
+          "email"
         ],
         "properties": {
           "_id": {
@@ -1219,11 +1223,6 @@
             "type": "string",
             "format": "email",
             "example": "Harley.Gleason@gmail.com"
-          },
-          "password": {
-            "description": "User's password",
-            "type": "string",
-            "example": "password89"
           }
         }
       }

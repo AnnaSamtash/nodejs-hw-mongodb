@@ -1,4 +1,4 @@
-import { randomBytes } from 'crypto';
+import { randomBytes } from 'node:crypto';
 import {
   ACCESS_TOKEN_VALID_UNTIL,
   REFRESH_TOKEN_VALID_UNTIL,
